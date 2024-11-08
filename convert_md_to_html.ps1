@@ -1,8 +1,23 @@
 # Define the root directory of your project
 $projectRoot = (Get-Location).Path
 
-# Load navigation template
-$navTemplate = Get-Content -Path "$projectRoot\nav_template.html" -Raw
+# Define the hard-coded navigation template
+$navTemplate = @"
+<nav>
+    <ul>
+        <li><a href="{HOME_PATH}index.html">Home</a></li>
+        <li><a href="{HOME_PATH}about.html">About</a></li>
+        <li class="dropdown">
+            <a href="{HOME_PATH}articles.html">Articles</a>
+            <div class="dropdown-content">
+                <a href="{HOME_PATH}articles/intro/intro.html">Introduction to Programming</a>
+                <a href="{HOME_PATH}articles/intro/sample.html">Sample</a>
+                <!-- Add additional articles here -->
+            </div>
+        </li>
+    </ul>
+</nav>
+"@
 
 # Footer content (you can adjust this as needed)
 $footerContent = @"
