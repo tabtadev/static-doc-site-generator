@@ -1,13 +1,12 @@
-# TabtaDev (tabtadev.github.io)
+# Static doc site generator
 
-TabtaDev is a static website hosted on GitHub Pages, created as a side project to share beginner-friendly programming tutorials. Built entirely from scratch without frameworks like Jekyll or Hugo.
+Built entirely from scratch without frameworks like Jekyll or Hugo. Windows (powershell) required.
 * **Preview** : https://tabtadev.github.io/static-doc-site-generator/
 
 ## Project Overview
 
-The main goals of TabtaDev are to provide:
+The main goals of this generator are to provide:
 
-- **Programming Tutorials**: Simple content aimed at those interested in starting with programming.
 - **Markdown-to-HTML Conversion**: A custom PowerShell script that converts Markdown files into HTML, enabling flexible content management.
 - **Automated Navigation and Styling**: Scripts automatically manage the navigation bar, footers, and CSS links, ensuring a consistent look across the site.
 
@@ -49,7 +48,6 @@ Clone this repository to your local machine: `git clone https://github.com/tabta
 
 - `articles/`: Contains Markdown and HTML files for tutorials and articles.
 - `css/`: Contains the main stylesheet (`style.css`) for the site.
-- `scripts/`: PowerShell scripts used for Markdown conversion, navigation/footer deployment, and CSS path verification.
 
 ## Scripts Overview
 
