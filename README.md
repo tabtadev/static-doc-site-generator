@@ -1,6 +1,7 @@
 # TabtaDev (tabtadev.github.io)
 
 TabtaDev is a static website hosted on GitHub Pages, created as a side project to share beginner-friendly programming tutorials. Built entirely from scratch without frameworks like Jekyll or Hugo.
+* **Preview** : https://tabtadev.github.io/static-doc-site-generator/
 
 ## Project Overview
 
