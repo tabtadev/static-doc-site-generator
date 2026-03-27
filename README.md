@@ -1,65 +1,98 @@
-# Static doc site generator
+# TabtaDev — Static Blog Generator
 
-Built entirely from scratch without frameworks like Jekyll or Hugo. Windows (powershell) required.
-* **Preview** : https://tabtadev.github.io/static-doc-site-generator/
+A lightweight static site generator built with PowerShell. No dependencies, no frameworks — just scripts that convert Markdown to HTML and deploy a fully navigable blog to GitHub Pages.
 
-## Project Overview
+**Live site:** [tabtadev.github.io](https://tabtadev.github.io)
 
-The main goals of this generator are to provide:
+## Why?
 
-- **Markdown-to-HTML Conversion**: A custom PowerShell script that converts Markdown files into HTML, enabling flexible content management.
-- **Automated Navigation and Styling**: Scripts automatically manage the navigation bar, footers, and CSS links, ensuring a consistent look across the site.
+Most static site generators (Jekyll, Hugo, etc.) require installing runtimes, package managers, and config files. This project takes a different approach: everything runs on PowerShell, which is already on every Windows machine. Write Markdown, click publish, done.
 
 ## Features
 
-- **Static Hosting on GitHub Pages**: A quick and reliable hosting solution using GitHub Pages.
-- **Custom Markdown Conversion**: A PowerShell script, `convert_md_to_html.ps1`, processes `.md` files into HTML, supporting standard Markdown syntax such as headers, lists, code blocks, images, and links.
-- **Automated Navigation and Footer Deployment**:
-  - **Navigation**: The `deploy_nav_footer.ps1` script dynamically updates navigation links across all pages, including adding new article links as they are created.
-  - **Footer Customization**: The script also supports footer customization, providing a consistent footer across the site.
-- **CSS Link Management**: The `check_css.ps1` script ensures all pages are linked to the correct CSS stylesheet path based on folder depth.
-- **Modern, Minimal Design**: A clean design that provides a focused reading experience.
+- **Markdown → HTML** — Custom converter supporting frontmatter (title, date, tags), table of contents, code blocks with syntax highlighting (highlight.js), tables, blockquotes, task lists
+- **Navigation management** — JSON-based menu config with categories, subcategories, and auto-deployment to all pages
+- **Dark/light mode** — CSS custom properties + localStorage persistence, follows OS preference
+- **Desktop GUI** — WinForms interface for managing articles, editing the nav tree, and one-click publishing
+- **Article index** — Auto-generated article listing page, sorted by date, with tags and descriptions
+- **Responsive** — Mobile-friendly layout with media queries
 
-## Setup & Deployment
+## Quick Start
 
-### Prerequisites
+```powershell
+# Clone the repo
+git clone https://github.com/tabtadev/tabtadev.github.io.git
+cd tabtadev.github.io
 
-Ensure you have PowerShell installed to run the deployment and conversion scripts.
+# Launch the site manager (GUI)
+.\site_manager.ps1
 
-### Clone the Repository
+# Or use the VBS launcher (hides the PowerShell console)
+# Double-click TabtaDev.vbs
+```
 
-Clone this repository to your local machine: `git clone https://github.com/tabtadev/tabtadev.github.io.git`
+### Writing an article
 
-### Adding New Articles
+1. Create a `.md` file in `articles/` with YAML frontmatter:
 
-1. Write your content in a Markdown file (e.g., `my-article.md`).
-2. Save the Markdown file in the appropriate directory.
+```markdown
+---
+title: My Article
+date: 2026-01-15
+tags: powershell, web
+description: A short summary.
+---
 
-### Deployment Steps
+Your content here. Supports **bold**, *italic*, `code`, lists, tables, etc.
+```
 
-1. **Convert Markdown to HTML**: Run the `convert_md_to_html.ps1` script to convert all `.md` files to `.html`.
-2. **Update Navigation and Footer**: Run the `deploy_nav_footer.ps1` script with the footer argument to update navigation and footer content on all pages:
-   - `.\deploy_nav_footer.ps1 -FooterText "© 2024 TabtaDev. All rights reserved."`
-3. **Check CSS Links**: Run the `check_css.ps1` script to verify that each HTML file is linked to the correct CSS path based on its folder depth.
-4. **Automate the Deployment Process**: Alternatively, run the `deploy.ps1` script to execute all the above steps in sequence:
-   - `.\deploy.ps1`
+2. Click **Publier mon site** in the GUI (or run the scripts manually).
+3. The HTML is generated, navigation updated, and the site is ready to push.
 
-## Folder Structure
+### Manual build (no GUI)
 
-- `articles/`: Contains Markdown and HTML files for tutorials and articles.
-- `css/`: Contains the main stylesheet (`style.css`) for the site.
+```powershell
+# Convert all .md files to .html + build article index
+powershell -File _scripts\convert_md_to_html.ps1
 
-## Scripts Overview
+# Generate nav from config and deploy to all pages
+powershell -File _scripts\deploy_nav.ps1
+```
 
-- **convert_md_to_html.ps1**: Converts Markdown files in `articles/` to HTML.
-- **deploy_nav_footer.ps1**: Deploys navigation and footer across all HTML pages. Accepts a `FooterText` parameter to customize the footer text.
-- **check_css.ps1**: Verifies and updates CSS link paths in all HTML files according to their directory depth.
-- **deploy.ps1**: Automates the conversion, navigation, footer, and CSS path verification steps in one command.
+## Project Structure
 
-## Future Development
+```
+├── index.html              # Homepage
+├── about.html              # About page
+├── articles.html           # Auto-generated article index
+├── site_manager.ps1        # Desktop GUI (WinForms)
+├── TabtaDev.vbs            # Console-less launcher
+├── css/style.css           # Stylesheet (light + dark mode)
+├── js/main.js              # Theme toggle logic
+├── articles/               # Markdown sources + generated HTML
+│   └── intro/
+│       ├── Intro.md
+│       └── intro.html
+├── images/                 # Site assets
+└── _scripts/               # Build pipeline
+    ├── convert_md_to_html.ps1   # Markdown converter
+    ├── deploy_nav.ps1           # Nav generator + deployer
+    └── nav_config.json          # Menu structure
+```
 
-Potential improvements for this side project include:
+## How It Works
 
-- **Multi-language support** for a wider audience.
-- **SEO Enhancements** to improve search engine visibility.
-- **Advanced Markdown Formatting** for additional flexibility in article layout.
+1. **`convert_md_to_html.ps1`** parses each `.md` file — extracts YAML frontmatter, converts Markdown to semantic HTML, generates a table of contents from headings, injects the navigation template, and builds the `articles.html` index page.
+
+2. **`deploy_nav.ps1`** reads `nav_config.json` (the menu tree), generates `nav_template.html`, then replaces the `<nav>` block in every HTML file — adjusting relative paths based on each file's directory depth.
+
+3. **`site_manager.ps1`** ties it all together in a WinForms GUI: article management, nav tree editing, and a publish button that runs both scripts in sequence.
+
+## Requirements
+
+- Windows with PowerShell 5.1+ (pre-installed on Windows 10/11)
+- That's it.
+
+## License
+
+MIT

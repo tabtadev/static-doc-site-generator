@@ -1,50 +1,63 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TabtaDev</title>
+    <title>Articles - TabtaDev</title>
     <link rel="stylesheet" href="css/style.css">
+    <link id="hljs-theme" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
 </head>
 <body>
-                                        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li class="dropdown">
-                    <a href="articles.html">Articles</a>
-                    <div class="dropdown-content">                        <a href="articles/intro/intro.html">Intro</a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li class="dropdown">
+                <a href="articles.html">Articles</a>
+                <div class="dropdown-content">
+                    <strong class="dropdown-heading">Introduction</strong>
+                    <a href="articles/intro/intro.html">Introduction to Programming</a>
+                    <a href="articles/intro/sample.html">Sample</a>
+                </div>
+            </li>
+            <li><button id="theme-toggle" aria-label="Toggle dark mode">&#127769;</button></li>
+        </ul>
+    </nav>
 
-    <!-- Main Content -->
-    <main>
-        <section>
-            <h1>Welcome to TabtaDev</h1>
-            <p>Your guide to programming for beginners.</p>
-        </section>
-    </main>
+<main>
+    <h1>Articles</h1>
+    <div class="article-list">
+        <article class="article-card">
+            <h3><a href="articles/intro/to-delete.html">To be deleted</a></h3>
+            <time class="article-date">2026-03-27</time>
+            <p>To be deleted</p>
+            <div class="article-tags"><span class="tag">tag1</span> <span class="tag">tag2</span></div>
+        </article>
+        <article class="article-card">
+            <h3><a href="articles/intro/my-article.html">My New Article</a></h3>
+            <time class="article-date">2026-03-27</time>
+            <p>My New Article</p>
+            <div class="article-tags"><span class="tag">tag1</span> <span class="tag">tag2</span></div>
+        </article>
+        <article class="article-card">
+            <h3><a href="articles/intro/sample.html">Sample Markdown Document</a></h3>
+            <time class="article-date">2024-01-01</time>
+            <p>A sample document demonstrating various Markdown syntax elements.</p>
+            <div class="article-tags"><span class="tag">sample</span> <span class="tag">markdown</span> <span class="tag">demo</span></div>
+        </article>
+        <article class="article-card">
+            <h3><a href="articles/intro/Intro.html">Introduction Complète à l'Informatique et à la Programmation</a></h3>
+            
+            
+            <div class="article-tags"></div>
+        </article>
 
-    <!-- Footer -->
-        <footer>
-        <p>&copy; 2024 TabtaDev. All rights reserved.</p>
-    </footer>
+    </div>
+</main>
+<footer>
+    <p>&copy; 2026 TabtaDev. All rights reserved.</p>
+</footer>
+<script src="js/main.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -1,0 +1,31 @@
+{
+    "items": [
+        {
+            "href": "index.html",
+            "label": "Home"
+        },
+        {
+            "href": "about.html",
+            "label": "About"
+        },
+        {
+            "label": "Articles",
+            "href": "articles.html",
+            "children": [
+                {
+                    "label": "Introduction",
+                    "children": [
+                        {
+                            "href": "articles/intro/intro.html",
+                            "label": "Introduction to Programming"
+                        },
+                        {
+                            "href": "articles/intro/sample.html",
+                            "label": "Sample"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

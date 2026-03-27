@@ -1,0 +1,15 @@
+# Legacy scripts (replaced by site_manager pipeline)
+_scripts/convert_md_to_html_old.ps1
+_scripts/deploy_nav_old.ps1
+_scripts/deploy_nav_footer.ps1
+_scripts/deploy_all.ps1
+_scripts/check_css.ps1
+
+# OS / Editor
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.swp
+*.swo
+*~
+.vscode/
