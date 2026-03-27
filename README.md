@@ -1,6 +1,6 @@
-# TabtaDev — Static Blog Generator
+# TabtaDev- Static Blog Generator
 
-A lightweight static site generator built with PowerShell. No dependencies, no frameworks — just scripts that convert Markdown to HTML and deploy a fully navigable blog to GitHub Pages.
+A lightweight static site generator built with PowerShell. No dependencies, no frameworks- just scripts that convert Markdown to HTML and deploy a fully navigable blog to GitHub Pages.
 
 **Live site:** [tabtadev.github.io](https://tabtadev.github.io/index.html)
 
@@ -10,12 +10,12 @@ Most static site generators (Jekyll, Hugo, etc.) require installing runtimes, pa
 
 ## Features
 
-- **Markdown → HTML** — Custom converter supporting frontmatter (title, date, tags), table of contents, code blocks with syntax highlighting (highlight.js), tables, blockquotes, task lists
-- **Navigation management** — JSON-based menu config with categories, subcategories, and auto-deployment to all pages
-- **Dark/light mode** — CSS custom properties + localStorage persistence, follows OS preference
-- **Desktop GUI** — WinForms interface for managing articles, editing the nav tree, and one-click publishing
-- **Article index** — Auto-generated article listing page, sorted by date, with tags and descriptions
-- **Responsive** — Mobile-friendly layout with media queries
+- **Markdown → HTML**- Custom converter supporting frontmatter (title, date, tags), table of contents, code blocks with syntax highlighting (highlight.js), tables, blockquotes, task lists
+- **Navigation management**- JSON-based menu config with categories, subcategories, and auto-deployment to all pages
+- **Dark/light mode**- CSS custom properties + localStorage persistence, follows OS preference
+- **Desktop GUI**- WinForms interface for managing articles, editing the nav tree, and one-click publishing
+- **Article index**- Auto-generated article listing page, sorted by date, with tags and descriptions
+- **Responsive**- Mobile-friendly layout with media queries
 
 ## Quick Start
 
@@ -82,9 +82,9 @@ powershell -File _scripts\deploy_nav.ps1
 
 ## How It Works
 
-1. **`convert_md_to_html.ps1`** parses each `.md` file — extracts YAML frontmatter, converts Markdown to semantic HTML, generates a table of contents from headings, injects the navigation template, and builds the `articles.html` index page.
+1. **`convert_md_to_html.ps1`** parses each `.md` file- extracts YAML frontmatter, converts Markdown to semantic HTML, generates a table of contents from headings, injects the navigation template, and builds the `articles.html` index page.
 
-2. **`deploy_nav.ps1`** reads `nav_config.json` (the menu tree), generates `nav_template.html`, then replaces the `<nav>` block in every HTML file — adjusting relative paths based on each file's directory depth.
+2. **`deploy_nav.ps1`** reads `nav_config.json` (the menu tree), generates `nav_template.html`, then replaces the `<nav>` block in every HTML file- adjusting relative paths based on each file's directory depth.
 
 3. **`site_manager.ps1`** ties it all together in a WinForms GUI: article management, nav tree editing, and a publish button that runs both scripts in sequence.
 
