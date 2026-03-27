@@ -2,7 +2,7 @@
 
 A lightweight static site generator built with PowerShell. No dependencies, no frameworks- just scripts that convert Markdown to HTML and deploy a fully navigable blog to GitHub Pages.
 
-**Live site:** [tabtadev.github.io](https://tabtadev.github.io/index.html)
+**Live site:** https://tabtadev.github.io/static-doc-site-generator/
 
 ## Why?
 
