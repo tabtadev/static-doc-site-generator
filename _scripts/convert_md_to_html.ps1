@@ -389,6 +389,10 @@ Get-ChildItem -Path $projectRoot -Recurse -Filter "*.md" |
     ForEach-Object {
         $mdFile = $_.FullName
         $htmlFile = [System.IO.Path]::ChangeExtension($mdFile, "html")
+        # Lowercase the filename to avoid case-sensitivity issues on Linux/GitHub Pages
+        $htmlDir = [System.IO.Path]::GetDirectoryName($htmlFile)
+        $htmlName = [System.IO.Path]::GetFileName($htmlFile).ToLower()
+        $htmlFile = [System.IO.Path]::Combine($htmlDir, $htmlName)
 
         # Calculate depth and home path
         $relativePath = $mdFile.Substring($projectRoot.Length + 1)
@@ -416,7 +420,7 @@ Get-ChildItem -Path $projectRoot -Recurse -Filter "*.md" |
 
         # Collect metadata for article index (articles/ folder only)
         if ($relativePath -like "articles\*") {
-            $relHtmlPath = $relativePath.Replace('\', '/').Replace('.md', '.html')
+            $relHtmlPath = $relativePath.Replace('\', '/').Replace('.md', '.html').ToLower()
             $articles += @{
                 Title       = $title
                 Date        = if ($meta.ContainsKey('date')) { $meta['date'] } else { "" }
